@@ -1,0 +1,5 @@
+.pgdata
+.idea
+.env
+.DS_Store
+/.pgdata/
