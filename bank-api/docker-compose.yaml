@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  app:
+    build: .
+    entrypoint: .docker/entrypoint.sh
+    container_name: imersao-fullcylce-nest-bank
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app
+    depends_on:
+      - db
+
+  db:
+    build: .docker/postgres
+    container_name: imersao-fullcycle-nest-bank-db
+    restart: always
+    tty: true
+    volumes:
+      - ./docker/dbdata:/var/lib/postgresql/dbdata
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=nest
