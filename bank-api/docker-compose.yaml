@@ -5,7 +5,7 @@ services:
   app:
     build: .
     entrypoint: .docker/entrypoint.sh
-    container_name: imersao-fullcylce-nest-bank
+    container_name: imersao-fullcycle-nest-bank
     ports:
       - 3000:3000
     volumes:
