@@ -1,11 +1,14 @@
 import { Controller, Get, Param, ParseUUIDPipe, Post } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { PixKey } from 'src/models/pix-key.model';
 import { Repository } from 'typeorm';
 
 @Controller('bank-accounts/:bankAccountId/pix-keys')
 export class PixKeyController {
-  constructor(private pixKeyRepo: Repository<PixKey>) {}
-
+  constructor(
+    @InjectRepository(PixKey)
+    private pixKeyRepo: Repository<PixKey>,
+  ) {}
   @Get()
   index(
     @Param('bankAccountId', new ParseUUIDPipe({ version: '4' }))
@@ -23,7 +26,4 @@ export class PixKeyController {
 
   @Post()
   store() {}
-
-  @Get('exists')
-  exists() {}
 }
