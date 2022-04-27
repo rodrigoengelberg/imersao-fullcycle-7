@@ -25,5 +25,8 @@ export class PixKeyController {
   }
 
   @Post()
-  store() {}
+  store(
+    @Param('bankAccountId', new ParseUUIDPipe({ version: '4' }))
+    bankAccoutId: string,
+  ) {}
 }
